@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'APIController@index')->name('home');
+Route::get('/', 'WelcomeController@index')->name('home');
 
 Auth::routes();
  
