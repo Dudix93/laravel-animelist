@@ -15,7 +15,7 @@ class APIController extends Controller
                 'content-type' => 'application/vnd.api+json',
                 'access' => 'application/vnd.api+json'
             ]);
-            return $res;
+            return $res->getStatusCode() === 404 ? abort(404) : $res;
         }
         return false;
     }

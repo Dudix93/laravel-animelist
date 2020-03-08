@@ -2,25 +2,25 @@
 
 @section('content')
 <div class="content">
-    <form action="/" style="width:50%;" method="GET">
-        <div class="form-group">
-            <label for="sortBy">Sort by:</label>
-            <select class="form-control" id="sortBy" name="sortBy">
-                <option id="sortByTitleAsc" value="asc">Title (A-Z)</option>
-                <option id="sortByTitleDesc" value="desc">Title (Z-A)</option>
-                <option id="sortByScore" value="score">Score</option>
-                <option id="sortByPopularity" value="popularity">Popularity</option>
-            </select>
-        </div>
-        {{-- <div class="form-group">
-            <label for="genres">Genres:</label>
-            <select class="form-control" id="genres" name="genres">
-                <option>Default select</option>
-            </select>
-        </div> --}}
-        <button type="submit" class="btn btn-info">Apply filters</button>
-    </form>
     <div class="container">
+        <form action="/" method="GET">
+            <div class="form-group d-flex">
+                <label style="width:10%; font-size:25;" for="sortBy">Sort by:</label>
+                <select class="form-control" style="width:20%;" id="sortBy" name="sortBy">
+                    <option id="sortByTitleAsc" value="asc">Title (A-Z)</option>
+                    <option id="sortByTitleDesc" value="desc">Title (Z-A)</option>
+                    <option id="sortByScore" value="score">Score</option>
+                    <option id="sortByPopularity" value="popularity">Popularity</option>
+                </select>
+            </div>
+            {{-- <div class="form-group">
+                <label for="genres">Genres:</label>
+                <select class="form-control" id="genres" name="genres">
+                    <option>Default select</option>
+                </select>
+            </div> --}}
+            <button type="submit" class="btn btn-info">Apply filters</button>
+        </form>
         <div class="row">
             @foreach ($titles as $anime)
                 @if (!$anime->r18)

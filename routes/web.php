@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'WelcomeController@index')->name('home');
+Route::get('/anime/{id}', [
+    'as' => 'anime-details',
+    'uses' => 'AnimeDetailsController@index',
+]);
 
 Auth::routes();
  
