@@ -7,6 +7,15 @@ use App\Http\Controllers\APIController;
 class WelcomeController extends Controller
 {
     public function index() {
+        echo "<script>
+        function focusSelectedFilterChoice(filterId) {
+            document.addEventListener('DOMContentLoaded', function(){
+                document.getElementById(filterId).setAttribute('selected', true);
+                console.log('sortbytitle');
+              });
+        }
+        </script>";
+        
         $url = 'https://api.jikan.moe/v3/season/2020/winter';
         // $genresUrl = 'https://api.jikan.moe/v3/genre/anime/';
         $res = APIController::getResource($url);
@@ -27,15 +36,19 @@ class WelcomeController extends Controller
             switch($_GET['sortBy']) {
                 case 'asc':
                     $titles = $titles->sortBy('title');
+                    echo "<script>focusSelectedFilterChoice('sortByTitleAsc');</script>";
                     break;
                 case 'desc':
                     $titles = $titles->sortByDesc('title');
+                    echo "<script>focusSelectedFilterChoice('sortByTitleDesc');</script>";
                     break;
                 case 'score':
                     $titles = $titles->sortByDesc('score');
+                    echo "<script>focusSelectedFilterChoice('sortByScore');</script>";
                     break;
                 case 'popularity':
                     $titles = $titles->sortByDesc('members');
+                    echo "<script>focusSelectedFilterChoice('sortByPopularity');</script>";
                     break;
                 default:
                     break;

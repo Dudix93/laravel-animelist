@@ -6,10 +6,10 @@
         <div class="form-group">
             <label for="sortBy">Sort by:</label>
             <select class="form-control" id="sortBy" name="sortBy">
-                <option value="asc">Title (A-Z)</option>
-                <option value="desc">Title (Z-A)</option>
-                <option value="score">Score</option>
-                <option value="popularity">Popularity</option>
+                <option id="sortByTitleAsc" value="asc">Title (A-Z)</option>
+                <option id="sortByTitleDesc" value="desc">Title (Z-A)</option>
+                <option id="sortByScore" value="score">Score</option>
+                <option id="sortByPopularity" value="popularity">Popularity</option>
             </select>
         </div>
         {{-- <div class="form-group">
