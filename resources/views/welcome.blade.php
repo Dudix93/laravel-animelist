@@ -3,6 +3,11 @@
 @section('content')
 <div class="content">
     <div class="container">
+        @if (!Auth::guest())
+zalogowany
+@else
+gościu
+@endif
         <form action="/" method="GET">
             <div class="form-group d-flex">
                 <label style="width:10%; font-size:25;" for="sortBy">Sort by:</label>
@@ -21,7 +26,7 @@
             </div> --}}
             <button type="submit" class="btn btn-info">Apply filters</button>
         </form>
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach ($titles as $anime)
                 @if (!$anime->r18)
                     @include('card', [
@@ -29,7 +34,7 @@
                     ])
                     @if ($loop->iteration % 3 === 0)
                         </div>    
-                        <div class="row">
+                        <div class="row justify-content-center">
                     @endif
                 @endif
             @endforeach
