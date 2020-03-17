@@ -1,5 +1,6 @@
 {{-- @extends('layouts.app') --}}
 <ul class="list-group">
-<li class="list-group-item">{{ $userId }}</li>
-<li class="list-group-item">{{ $titleId }}</li>
-  </ul>
+  @foreach ($titleIds as $titleId)
+    <li class="list-group-item">{{ $titleId->title_id }}</li>
+  @endforeach
+</ul>
