@@ -16,12 +16,19 @@ class UserTitleController extends Controller
     }
 
     public function index() {
+        $following = [];
+        $url = 'https://api.jikan.moe/v3/anime/';
+        $ids = DB::table('user_title')
+            ->select('title_id')
+            ->where('user_id', $this->userId)
+            ->get();
+        foreach ($ids as $id) {
+            $res = APIController::getResource($url.$id->title_id);
+            $anime = json_decode($res->getBody()->getContents());
+            array_push($following, $anime);
+        }
         return view('list-view', [
-            'userId' => $this->userId,
-            'titleIds' => DB::table('user_title')
-                ->select('title_id')
-                ->where('user_id', $this->userId)
-                ->get(),
+            'animes' => $following,
         ]);
     }
 
